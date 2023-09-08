@@ -39,6 +39,7 @@ public class EntityGeneratorImpl implements Generator {
             Template template = configuration.getTemplate("entity.ftl");
 
             // 处理每个表
+            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/domain";
             for (String tableName : tableNames) {
                 // 查询表结构，获取列信息等
                 List<DatabaseUtils.Column> columns = getColumns(tableName);
@@ -51,7 +52,7 @@ public class EntityGeneratorImpl implements Generator {
                 dataModel.put("columns", columns);
 
 
-                File outputDir = new File(CodeGeneratorUtils.OUTPUT_DIR + "/domain");
+                File outputDir = new File(fileUrl);
                 if (!outputDir.exists()) {
                     outputDir.mkdirs();
                 }
@@ -70,7 +71,7 @@ public class EntityGeneratorImpl implements Generator {
                 fileWriter.close();
             }
 
-            System.out.println("Code generated successfully.");
+            System.out.println("Code generated successfully!file:" +fileUrl);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }

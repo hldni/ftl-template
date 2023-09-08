@@ -41,7 +41,8 @@ public class ServiceGeneratorImpl implements Generator {
 
 //            dataModel.put("classNameLower", CodeGeneratorUtils.toLowerCaseFirstOne(className));
 
-            File outputDir = new File(CodeGeneratorUtils.OUTPUT_DIR + "/service/impl");
+            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/service";
+            File outputDir = new File(fileUrl);
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
@@ -53,7 +54,7 @@ public class ServiceGeneratorImpl implements Generator {
 
             writer.close();
 
-            System.out.println("Service implementation generated successfully!");
+            System.out.println("Service implementation generated successfully!file:" + fileUrl);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }

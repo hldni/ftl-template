@@ -41,7 +41,8 @@ public class MapperGeneratorImpl implements Generator {
             dataModel.put("className", className);
             dataModel.put("tableRemarks", DatabaseUtils.remarkMap.get(tableName));
 
-            File outputDir = new File(CodeGeneratorUtils.OUTPUT_DIR + "/mapper");
+            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/mapper";
+            File outputDir = new File(fileUrl);
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
@@ -53,7 +54,7 @@ public class MapperGeneratorImpl implements Generator {
 
             writer.close();
 
-            System.out.println("Mapper generated successfully!");
+            System.out.println("Mapper generated successfully!file:{}" + fileUrl);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }

@@ -46,7 +46,7 @@ public class CodeGeneratorUtils {
             System.exit(0);
         }
         if (org.springframework.util.StringUtils.hasText(outputDir)) {
-            CodeGeneratorUtils.OUTPUT_DIR = outputDir + PACKAGE_NAME.replace(".", "/");
+            CodeGeneratorUtils.OUTPUT_DIR = outputDir + "/src/main/java/" + PACKAGE_NAME.replace(".", "/");
         }
     }
 //    @Value("${templateDir}")

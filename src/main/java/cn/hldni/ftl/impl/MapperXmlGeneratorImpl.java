@@ -41,7 +41,8 @@ public class MapperXmlGeneratorImpl implements Generator {
             dataModel.put("tableRemarks", DatabaseUtils.remarkMap.get(tableName));
 
 
-            String templateDir = CodeGeneratorUtils.PROJECT_DIR + "/src/main/resources/mapper";
+            String fileUrl = CodeGeneratorUtils.PROJECT_DIR + "/src/main/resources/mapper";
+            String templateDir = fileUrl;
             File outputDir = new File(templateDir);
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
@@ -54,7 +55,7 @@ public class MapperXmlGeneratorImpl implements Generator {
 
             writer.close();
 
-            System.out.println("Mapper XML generated successfully!");
+            System.out.println("Mapper XML generated successfully!file:" + fileUrl);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }

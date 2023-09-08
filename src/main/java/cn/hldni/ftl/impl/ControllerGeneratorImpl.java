@@ -46,14 +46,15 @@ public class ControllerGeneratorImpl implements Generator {
                 outputDir.mkdirs();
             }
 
-            File outputFile = new File(CodeGeneratorUtils.OUTPUT_DIR + "/controller/" +  className + "Controller.java");
+            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/controller/" + className + "Controller.java";
+            File outputFile = new File(fileUrl);
             Writer writer = new FileWriter(outputFile);
 
             template.process(dataModel, writer);
 
             writer.close();
 
-            System.out.println("Controller generated successfully!");
+            System.out.println("Controller generated successfully! file:" + fileUrl);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }
