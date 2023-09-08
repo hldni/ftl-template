@@ -1,0 +1,11 @@
+outputDir: D:\study\京城大师赛\sql\
+package: cn.test
+generator:
+  tables: t_role,t_board_info
+
+spring:
+  datasource:
+    url: jdbc:mysql://139.9.36.87:3306/jcdss?useInformationSchema=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
