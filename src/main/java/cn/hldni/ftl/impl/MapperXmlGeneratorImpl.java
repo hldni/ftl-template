@@ -41,14 +41,14 @@ public class MapperXmlGeneratorImpl implements Generator {
             dataModel.put("tableRemarks", DatabaseUtils.remarkMap.get(tableName));
 
 
-            String fileUrl = CodeGeneratorUtils.PROJECT_DIR + "/src/main/resources/mapper";
-            String templateDir = fileUrl;
+            String templateDir = CodeGeneratorUtils.PROJECT_DIR + "/src/main/resources/mapper";
             File outputDir = new File(templateDir);
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
 
-            File outputFile = new File(templateDir + "/" + className + "Mapper.xml");
+            String fileUrl = templateDir + "/" + className + "Mapper.xml";
+            File outputFile = new File(fileUrl);
             Writer writer = new FileWriter(outputFile);
 
             template.process(dataModel, writer);

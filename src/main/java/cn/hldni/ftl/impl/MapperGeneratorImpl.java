@@ -41,13 +41,13 @@ public class MapperGeneratorImpl implements Generator {
             dataModel.put("className", className);
             dataModel.put("tableRemarks", DatabaseUtils.remarkMap.get(tableName));
 
-            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/mapper";
-            File outputDir = new File(fileUrl);
+            File outputDir = new File(CodeGeneratorUtils.OUTPUT_DIR + "/mapper");
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
 
-            File outputFile = new File(CodeGeneratorUtils.OUTPUT_DIR + "/mapper/" +  className + "Mapper.java");
+            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/mapper/" + className + "Mapper.java";
+            File outputFile = new File(fileUrl);
             Writer writer = new FileWriter(outputFile);
 
             template.process(dataModel, writer);

@@ -13,9 +13,6 @@ public class DatabaseUtils {
         HashSet<String> columnNames = new HashSet<>();
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             DatabaseMetaData metadata = connection.getMetaData();
-            ResultSet tables = metadata.getTables(null, null, tableName, null);
-            tables.next();
-            remarkMap.put(tableName, tables.getString("REMARKS"));
 
             ResultSet resultSet = metadata.getColumns(null, null, tableName, null);
             while (resultSet.next()) {
@@ -30,7 +27,10 @@ public class DatabaseUtils {
                 columnNames.add(columnName);
                 columns.add(new Column(columnName, columnType, remarks));
             }
-
+            ResultSet tables = metadata.getTables(null, null, tableName, null);
+            tables.next();
+            remarkMap.put(tableName, tables.getString("REMARKS"));
+            tables.close();
             resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();

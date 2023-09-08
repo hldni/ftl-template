@@ -41,13 +41,13 @@ public class ServiceGeneratorImpl implements Generator {
 
 //            dataModel.put("classNameLower", CodeGeneratorUtils.toLowerCaseFirstOne(className));
 
-            String fileUrl = CodeGeneratorUtils.OUTPUT_DIR + "/service";
-            File outputDir = new File(fileUrl);
+            File outputDir = new File(CodeGeneratorUtils.OUTPUT_DIR + "/service");
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
 
-            File outputFile = new File(outputDir.getPath() + "/" + className + "Service.java");
+            String fileUrl = outputDir.getPath() + "/" + className + "Service.java";
+            File outputFile = new File(fileUrl);
             Writer writer = new FileWriter(outputFile);
 
             template.process(dataModel, writer);

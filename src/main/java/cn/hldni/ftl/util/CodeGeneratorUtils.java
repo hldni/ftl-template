@@ -60,6 +60,7 @@ public class CodeGeneratorUtils {
 
     // 根据表名获取类名
     public static String getClassName(String tableName) {
+        tableName = tableName.replace(" ", "");
         tableName = tableName.replaceFirst("t_", "");
         // 根据表名转换规则生成类名
         tableName = StringUtils.underscoreToCamelCase(tableName);

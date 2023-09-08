@@ -1,5 +1,6 @@
 package cn.hldni.ftl;
 
+import cn.hldni.ftl.impl.EntityGeneratorImpl;
 import cn.hldni.ftl.util.CodeGeneratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,10 +34,14 @@ public class CodeGenerator {
     public static void main(String[] args) throws IOException {
         ApplicationContext context = SpringApplication.run(CodeGenerator.class, args);
         System.out.println(CodeGeneratorUtils.OUTPUT_DIR);
+        for (int i = 0; i < tables.length; i++) {
+            tables[i] = tables[i].replace(" ", "");
+
+        }
         for (Generator generator : generatorList) {
             generator.generator(tables);
         }
-        System.exit(1);
+        System.exit(0);
     }
 
 
