@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Mapper XML生成器
  */
-@Component
+//@Component
 public class MapperXmlGeneratorImpl implements Generator {
     @Override
     public void generator(String... tableNames) {
